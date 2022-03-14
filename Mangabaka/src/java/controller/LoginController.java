@@ -43,20 +43,26 @@ public class LoginController extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             
-            Account acc = db.Login(username, password);
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setAttribute("password", password);
-            if(acc == null) {
-                accountState = "Username or Password is incorrect";
-                request.setAttribute("accountState", accountState);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+            if(username == null || password == null){
+                accountState = "t";
             }
-            else
-            {
-                session.setAttribute("type", acc.getType()); 
-                response.sendRedirect("HomeController");
+            else {
+                Account acc = db.Login(username, password);
+                HttpSession session = request.getSession();
+                session.setAttribute("username", username);
+                session.setAttribute("password", password);
+                if(acc == null) {
+                    accountState = "Username or Password is incorrect";
+                    request.setAttribute("accountState", accountState);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                }
+                else
+                {
+                    session.setAttribute("type", acc.getType()); 
+                    response.sendRedirect("HomeController");
+                }
             }
+            
         }
     }
 
