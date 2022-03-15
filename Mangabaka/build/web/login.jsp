@@ -21,7 +21,7 @@
             </div>
             
         </header>
-        <form action="LoginController" method="GET">
+        <form action="LoginController" method="">
             <div class="main-view">
                 <div class="card">
                     <h1>Login</h1>

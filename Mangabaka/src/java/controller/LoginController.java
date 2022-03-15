@@ -44,13 +44,10 @@ public class LoginController extends HttpServlet {
             String password = request.getParameter("password");
             
             if(username == null || password == null){
-                accountState = "t";
+                accountState = "";
             }
             else {
                 Account acc = db.Login(username, password);
-                HttpSession session = request.getSession();
-                session.setAttribute("username", username);
-                session.setAttribute("password", password);
                 if(acc == null) {
                     accountState = "Username or Password is incorrect";
                     request.setAttribute("accountState", accountState);
@@ -58,6 +55,9 @@ public class LoginController extends HttpServlet {
                 }
                 else
                 {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("username", username);
+                    session.setAttribute("password", password);
                     session.setAttribute("type", acc.getType()); 
                     response.sendRedirect("HomeController");
                 }
