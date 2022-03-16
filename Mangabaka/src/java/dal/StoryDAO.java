@@ -73,7 +73,6 @@ public class StoryDAO {
                 + "', '" + story.getStatus()
                 + "', '" + story.getLink()
                 + "', '" + story.getThumbnail()
-                + "', '" + story.getAuthor()
                 + "')\n";
         try {
             conn = new DBContext().getConnection();
@@ -121,5 +120,9 @@ public class StoryDAO {
             rs = ps.executeQuery();
         } catch (Exception e) {
         }
+    }
+    public static void main(String[] args) {
+        StoryDAO db = new StoryDAO();
+        db.CreateStory(new Story("naruto", 1, "a", "aaa", "zz", "bbb"));
     }
 }

@@ -21,6 +21,6 @@ public class DBContext {
     private final String dbName = "Assignment";
     private final String portNumber = "1433";
     private final String instance="";//LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
-    private final String userID = "sa";
-    private final String password = "Letinh_14";
+    private final String userID = "hieunnhe";
+    private final String password = "12345678";
 }

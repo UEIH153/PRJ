@@ -97,5 +97,8 @@ public class ChapterDAO {
         }
     }
     
+    public static void main(String[] args) {
+        
+    }
     
 }

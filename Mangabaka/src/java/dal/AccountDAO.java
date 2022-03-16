@@ -178,4 +178,9 @@ public class AccountDAO{
         } catch (Exception e) {
         }
     }
+    
+    public static void main(String[] args) {
+        AccountDAO db = new AccountDAO();
+        System.out.println(db.Login("admin", "12345678"));
+    }
 }
