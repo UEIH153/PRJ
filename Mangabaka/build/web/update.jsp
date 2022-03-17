@@ -40,7 +40,7 @@
                 <p class="username">${sessionScope.username}</p>
             </div>
         </header>
-        <form action="UpdateController" method="get">
+        <form action="UpdateController" method="post">
             <div class="main-view">
                 <h1>Admin</h1>
                 <div class="card-update">

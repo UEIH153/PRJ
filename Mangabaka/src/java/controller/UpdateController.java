@@ -51,7 +51,7 @@ public class UpdateController extends HttpServlet {
             db.CreateChapter(chap);
             state = "Successful!";
             request.setAttribute("state", state);
-            request.getRequestDispatcher("update.jsp").forward(request, response);
+            response.sendRedirect("AdminController");
         }
     }
 

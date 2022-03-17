@@ -13,40 +13,83 @@
         <title>Header</title>
     </head>
     <body>
-        <div class="main-header">
-                <a href="HomeController">
-                    <img class="logo" src="Resource/Thumbnail/logo.png">
-                </a>
-            <nav class="nav-links">
-                    <ul>
-                        <li><a href="HomeController">Home</a></li>
-                        <li><a href="">Genres</a></li>
-                        <li><a href="">New Release</a></li>
-                        <li><a href="">Popular</a></li>
-                    </ul>
-                </nav>
-                <div class="search-box">
-                    <input class="search-txt" type="text" placeholder="Type to search...">
-                    <a class="search-btn" href="#">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
-            <c:if test="${sessionScope.type == null}">
-                    <a href="login.jsp" class="login">
-                        <i class="fas fa-user"></i>
-                    </a>
-                </c:if>
-                <c:if test="${sessionScope.type == 'admin'}">
-                    <a href="AdminController" class="login">
-                        <i class="fas fa-user"></i>
-                    </a>
-                </c:if>
-                <c:if test="${sessionScope.type == 'normal'}">
-                    <a href="ProfileController" class="login">
-                        <i class="fas fa-user"></i>
-                    </a>
-                </c:if> 
-                <p class="username">${sessionScope.username}</p>
+        
+
+        <div class="main-read">
+            <div class="read">
+                <%
+                    String name = story.getName();
+                %>
+                <%
+                    for(int i = 1; i <= chap.getPageAmount(); i++) {
+                %>
+                        <img class="storyImg" src="Resource/Story/<%=name%>/<%=chap.getChapter()%>/<%=i%>.png">         
+                <%}%>
             </div>
+        </div>
+
+        <footer>
+            <div class="main-footer">
+                <div class="level">
+                    <div class="left-level">
+                        <ul class="list-01">
+                            <li>
+                                <a href="HomeController">
+                                    <i class="fas fa-home"></i>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fas fa-bug"></i>
+                                    <span>Report</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="center-level">
+                        <div class="back">
+                            <a href="">
+                                <i class="fas fa-arrow-circle-left fa-customize fa-color"></i>
+                            </a>
+                        </div>
+                        <select selected="selected" class="chapter" name="chapter" onchange="location = this.value">
+                            <option value="" selected disabled hidden>Chapter <%=chap.getChapter()%></option>
+                            <%
+                                for(int i = story.getChapterAmount(); i >= 1; i--) {
+                            %>
+                                    <option value="ReadController?name=${story.getName()}&chapter=<%=i%>">
+                                        Chapter <%=i%>                                        
+                                    </option>                                    
+                            <%}%>
+                            
+                        </select>
+                        <div class="next">
+                            <a href="">
+                                <i class="fas fa-arrow-circle-right fa-customize fa-color"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-level">
+                        <ul class="list-01">
+                            <li>
+                                <a href="HomeController">
+                                    <i class="far fa-lightbulb"></i>
+                                    <span>Light</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="far fa-heart"></i>
+                                    <span>Follow</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>     
+            
+        </footer>  
     </body>
 </html>
