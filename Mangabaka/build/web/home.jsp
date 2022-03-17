@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <c:if test="${sessionScope.type == null}">
-                    <a href="login.jsp" class="login">
+                    <a href="LoginController" class="login">
                         <i class="fas fa-user"></i>
                     </a>
                 </c:if>

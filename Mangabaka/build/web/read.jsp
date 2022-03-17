@@ -11,7 +11,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel = "stylesheet" href="Css/read.css">
         <link rel = "stylesheet" href="Css/header.css">
         <script src="https://kit.fontawesome.com/ff55557564.js" crossorigin="anonymous"></script>
@@ -47,22 +46,8 @@
                 </a>
                 <p class="username">${sessionScope.username}</p>
             </div>
-        </header>
-
-        <div class="main-read">
-            <div class="read">
-                <%
-                    String name = story.getName();
-                %>
-                <%
-                    for(int i = 1; i <= chap.getPageAmount(); i++) {
-                %>
-                        <img class="storyImg" src="Resource/Story/<%=name%>/<%=chap.getChapter()%>/<%=i%>.png">         
-                <%}%>
-            </div>
-        </div>
-
-        <footer>
+        </header>      
+            <footer>
             <div class="main-footer">
                 <div class="level">
                     <div class="left-level">
@@ -88,14 +73,7 @@
                             </a>
                         </div>
                         <select selected="selected" class="chapter" name="chapter" onchange="location = this.value">
-                            <option value="" selected disabled hidden>Chapter <%=chap.getChapter()%></option>
-                            <%
-                                for(int i = story.getChapterAmount(); i >= 1; i--) {
-                            %>
-                                    <option value="ReadController?name=${story.getName()}&chapter=<%=i%>">
-                                        Chapter <%=i%>                                        
-                                    </option>                                    
-                            <%}%>
+                            <option value="" selected disabled hidden>Chapter </option>
                             
                         </select>
                         <div class="next">
@@ -124,7 +102,6 @@
                 
             </div>     
             
-        </footer>        
-                
+        </footer>  
     </body>
 </html>

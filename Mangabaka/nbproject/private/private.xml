@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/Entity/Story.java</file>
             <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/dal/StoryDAO.java</file>
-            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/controller/CreateController.java</file>
             <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/Entity/Chapter.java</file>
-            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/controller/LoginController.java</file>
             <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/web/login.jsp</file>
             <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/dal/AccountDAO.java</file>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/controller/HomeController.java</file>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/controller/AdminController.java</file>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/controller/LoginController.java</file>
             <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/dal/BaseDAO.java</file>
+            <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/web/admin.jsp</file>
             <file>file:/C:/Users/Computer/Desktop/assprjgithub/Mangabaka/src/java/dal/ChapterDAO.java</file>
         </group>
     </open-files>
