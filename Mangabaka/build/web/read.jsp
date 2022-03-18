@@ -73,7 +73,7 @@
                             </a>
                         </div>
                         <select selected="selected" class="chapter" name="chapter" onchange="location = this.value">
-                            <option value="" selected disabled hidden>Chapter </option>
+                            <option value="" selected disabled hidden>Chapter ${}</option>
                             
                         </select>
                         <div class="next">
