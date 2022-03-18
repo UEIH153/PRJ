@@ -36,7 +36,7 @@
                     </ul>
                 </nav>
                 <div class="search-box">
-                    <input class="search-txt" type="text" placeholder="Type to search...">
+                    <input name="search" class="search-txt" type="text" placeholder="Type to search...">
                     <a class="search-btn" href="#">
                         <i class="fas fa-search"></i>
                     </a>
