@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -46,11 +45,22 @@ public class StoryDAO {
     }
     
     public Story GetStory(String name) {
-        ArrayList<Story> list = getAll();
-        for(Story s : list){
-            if(s.getName().equalsIgnoreCase(name)){
-                return  s;
+        String sql = "select * from Story\n"
+                + "where [name] = ?\n";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                return new Story(rs.getString("name"), 
+                        rs.getInt("chapterAmount"), 
+                        rs.getString("status"), 
+                        rs.getString("link"),
+                        rs.getString("thumbnail"),
+                        rs.getString("author"));
             }
+        } catch (Exception e) {
         }
         
         return null;
@@ -113,11 +123,6 @@ public class StoryDAO {
     }
     public static void main(String[] args) {
         StoryDAO db = new StoryDAO();
-        
-        ArrayList<Story> list = db.getAll();
-        for(Story s : list){
-            System.out.println(s.getName());
-        }
-        System.out.println(db.GetStory("Naruto"));
+        db.CreateStory(new Story("naruto", 1, "a", "aaa", "zz", "bbb"));
     }
 }
