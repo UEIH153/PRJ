@@ -98,7 +98,12 @@ public class ChapterDAO {
     }
     
     public static void main(String[] args) {
+        ChapterDAO db = new ChapterDAO();
+//        db.CreateChapter(new Chapter("Naruto", 1, 1));
         
+        StoryDAO storyDB = new StoryDAO();
+        Story story = storyDB.GetStory("Naruto");
+        System.out.println(story.getName());
     }
     
 }

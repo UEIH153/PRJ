@@ -24,7 +24,7 @@
     </head>
     <body>
         <header>
-<!--            <div class="main-header">
+            <div class="main-header">
                 <a href="HomeController">
                     <img class="logo" src="Resource/Thumbnail/logo.png">
                 </a>
@@ -39,7 +39,7 @@
                 
                 
                 <p class="username">${sessionScope.username}</p>
-            </div>-->
+            </div>
         </header>
         <form action="EditStory" method="get">
             <div class="table-data">
