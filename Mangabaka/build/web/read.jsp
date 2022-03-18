@@ -4,6 +4,7 @@
     Author     : tinht
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="Entity.Chapter"%>
 <%@page import="Entity.Story"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,6 +19,7 @@
         <%
             Story story = (Story)request.getAttribute("story");
             Chapter chap = (Chapter)request.getAttribute("chap");
+            int chapter = 1;
         %>
     </head>
     <body>
@@ -47,6 +49,18 @@
                 <p class="username">${sessionScope.username}</p>
             </div>
         </header>      
+            <div class="main-read">
+            <div class="read">
+                <%
+                    String name = story.getName();
+                %>
+                <%
+                    for(int i = 1; i <= chap.getPageAmount(); i++) {
+                %>
+                        <img class="storyImg" src="Resource/Story/<%=name%>/<%=chap.getChapter()%>/<%=i%>.png">         
+                <%}%>
+            </div>
+        </div>
             <footer>
             <div class="main-footer">
                 <div class="level">
@@ -72,8 +86,15 @@
                                 <i class="fas fa-arrow-circle-left fa-customize fa-color"></i>
                             </a>
                         </div>
-                        <select selected="selected" class="chapter" name="chapter" onchange="location = this.value">
-                            <option value="" selected disabled hidden>Chapter ${}</option>
+                        <select id="dynamic_select" selected="selected" class="chapter" name="chapter" onchange="location = this.value">
+                            <option value="${chapter}" selected disable hidden>Chapter ${chapter}</option>
+                            <%
+                                for(int i = 1; i <= story.getChapterAmount(); i++) {
+                            %>
+                            <option value="ReadController?name=${story.getName()}&chapter=<%=i%>">
+                                    Chapter <%=i%>
+                            </option>
+                            <%}%>
                             
                         </select>
                         <div class="next">

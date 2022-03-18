@@ -43,19 +43,18 @@
                 <p class="username">${sessionScope.username}</p>
             </div>
         </header>
-        <form action="AdminController" method="get">
+        <form action="AdminController" method="post">
             <div class="main-view">
                 <h1>Admin</h1>
                 <div class="card">
-                    <input type="submit" name="button" value="Create Story">
+                    <input type="submit" name="button" value="Create">
                     <br>
-                    <input type="submit" name="button" value="Edit Story">
+                    <input type="submit" name="button" value="Edit">
                     <br>
-                    <input type="submit" name="button" value="Update Story">
+                    <input type="submit" name="button" value="Update">
                     <br>
-                    <input type="submit" name="button" value="Delete Story">
+                    <input type="submit" name="button" value="Delete">
                 </div>
-                
             </div>
         </form>    
     </body>
