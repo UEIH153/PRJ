@@ -24,7 +24,7 @@
     </head>
     <body>
         <header>
-            <div class="main-header">
+            <div class="main-header"  style="position: relative!important">
                 <a href="HomeController">
                     <img class="logo" src="Resource/Thumbnail/logo.png">
                 </a>
@@ -41,7 +41,7 @@
                 <p class="username">${sessionScope.username}</p>
             </div>
         </header>
-        <form action="EditStory" method="get">
+        <form action="EditStory" method="get" style="margin-top: 20px">
             <div class="table-data">
                 
             </div>
@@ -59,7 +59,7 @@
                     <td><%=s.getStatus()%></td>
                     <td><%=s.getThumbnail()%></td>
                     <td>
-                        <a href="up.jsp?name=<%=s.getName()%>">
+                        <a href="up.jsp?id=<%=s.getId()%>">
                             Update
                         </a>
                     </td>
@@ -72,7 +72,7 @@
                 <%}%>
             </table>
             
-            <div class="main-view">
+            <div class="main-view" >
                 <h1>Admin</h1>
                 <div class="card-update">
                     <h2>Edit Story</h2>

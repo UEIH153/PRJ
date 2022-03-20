@@ -30,16 +30,16 @@ public class ReadController extends HttpServlet {
             throws ServletException, IOException {
         StoryDAO storyDB = new StoryDAO();
         ChapterDAO chapterDB = new ChapterDAO();
-        
+
         String name = request.getParameter("name");
         int chapter = (request.getParameter("chapter") == null) ? 0 : Integer.valueOf(request.getParameter("chapter"));
         Story story = storyDB.GetStory(name);
         Chapter chap = chapterDB.GetChapter(name, chapter);
-        
+
         request.setAttribute("story", story);
         request.setAttribute("chap", chap);
         request.setAttribute("chapter", chapter);
-        
+
         request.getRequestDispatcher("read.jsp").forward(request, response);
     }
 

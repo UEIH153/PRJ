@@ -22,73 +22,32 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "EditStory", urlPatterns = {"/EditStory"})
 public class EditStory extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            StoryDAO db = new StoryDAO();
-            
-            String state = ""; 
-            String button = request.getParameter("button");
-            String currentName = request.getParameter("currentName");
-            String name = request.getParameter("name");
-            String author = "";
-            String status = request.getParameter("status");
-            String link = "Resource/Story/" + name;
-            String thumbnail = "Resource/Thumbnail/" + request.getParameter("thumbnail");
-            
-            Story story = new Story(name, 0, status, link, thumbnail, author);
-            
-            if(currentName != null && name != null && status != null && thumbnail != null) {
-                db.UpdateStory(currentName, story);
-                state = "Successfull!";
-            }
-            else if(button != null) {
-                state = "Story not valid!";
-            }
-                    
-            request.setAttribute("state", state);
-            request.getRequestDispatcher("editStory.jsp").forward(request, response);
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       request.getRequestDispatcher("editStory.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         StoryDAO db = new StoryDAO();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Story story = db.get(id);
+        String name = request.getParameter("name");
+        String author = "";
+        String status = request.getParameter("status");
+        String link = "Resource/Story/" + name;
+        String thumbnail = "Resource/Thumbnail/" + request.getParameter("thumbnail");
+        story.setAuthor(author);
+        story.setName(name);
+        story.setStatus(status);
+        story.setThumbnail(thumbnail);
+        db.UpdateStory(story);
+        request.setAttribute("state", "Update success!");
+        request.getRequestDispatcher("editStory.jsp").forward(request, response);
     }
 
     /**

@@ -18,7 +18,9 @@
         <title>Mangabaka</title>
         <%
             Story story = (Story)request.getAttribute("story");
+            if(story==null) story = new Story();
             Chapter chap = (Chapter)request.getAttribute("chap");
+            if(chap==null) chap = new Chapter();
             int chapter = 1;
         %>
     </head>

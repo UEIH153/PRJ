@@ -35,8 +35,8 @@
                         <li><a href="">Popular</a></li>
                     </ul>
                 </nav>
-                
-                
+
+
                 <p class="username">${sessionScope.username}</p>
             </div>
         </header>
@@ -48,10 +48,10 @@
                     <div class="container">
                         <select name="currentName">
                             <%
-                                for(Story story : storyList) {
+                                for (Story story : storyList) {
                             %>
                             <option>
-                                <%= story.getName() %>
+                                <%= story.getName()%>
                             </option>
                             <%}%>
                         </select>

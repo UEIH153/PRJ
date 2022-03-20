@@ -4,6 +4,8 @@
     Author     : tinht
 --%>
 
+<%@page import="Entity.Story"%>
+<%@page import="dal.StoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,21 +14,24 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>
-            <%
-                String name = request.getParameter("name");
-                request.setAttribute("currentName", name);
-            %>
-            <%=name%>
-        </h1>
-        <form action="EditStory?currentName=<%=name%>" method="Post">
-            <%
-                request.setAttribute("currentName", request.getParameter("name"));
-            %>
-            Name <input name="name" type="text"><br>
-            Status <input name="status" type="text"><br>
-            Thumbnail <input name="thumbnail" type="file"><br>
-            <input type="submit">
-        </form>            
+        <div>
+            <h1>
+                <%
+                    String idString = request.getParameter("id");
+                    int id = Integer.parseInt(idString);
+                    StoryDAO storyDAO = new StoryDAO();
+                    Story story = storyDAO.get(id);
+                    request.setAttribute("story", story);
+                %>
+                <%=story.getName()%>
+            </h1>
+            <form action="EditStory" method="Post">
+                <input name="id" value="${story.id}" type="hidden"/>
+                Name <input name="name" type="text" value="${story.name}"><br>
+                Status <input name="status" type="text" value="${story.status}"><br>
+                Thumbnail <input name="thumbnail" type="file"><br>
+                <input type="submit">
+            </form>     
+        </div>       
     </body>
 </html>

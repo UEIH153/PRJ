@@ -35,12 +35,14 @@
                         <li><a href="">Popular</a></li>
                     </ul>
                 </nav>
-                <div class="search-box">
-                    <input name="search" class="search-txt" type="text" placeholder="Type to search...">
-                    <a class="search-btn" href="#">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
+                <form action="HomeController">
+                    <div class="search-box">
+                        <input name="search" class="search-txt" type="text" placeholder="Type to search...">
+                        <a class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </form>
                 <c:if test="${sessionScope.type == null}">
                     <a href="LoginController" class="login">
                         <i class="fas fa-user"></i>
@@ -59,7 +61,7 @@
                 <p class="username">${sessionScope.username}</p>
             </div>
         </header>
-        
+
         <div class="main-view">
             <div class="thumb-view">
                 <div class="card">
@@ -83,30 +85,40 @@
                             next King of the Pirates.
                         </p>    
                     </div>
-                    
-                    
+
+
                     <div class="btn-read">
                         <a href="ReadController?name=OnePiece&chapter=1">
                             <button id="btn-readnow">Read Now</button>
                         </a>
-                        
+
                         <button id="btn-moreinfo">
                             <i class="fas fa-info-circle"></i>
                             More Information
                         </button>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="popular-view">
                 <div class="row-Header-title">
                     <h1>New Release</h1>
                 </div>
-                
-                <div class="slider-bar">
-                    
+                <div style="margin-bottom: 20px; width: 100%; display: flex; justify-content: flex-end; align-items: center">
+                    <div>
+                        <a href="HomeController?page=${page-1<0?page:page-1}" style="margin: 10px 10px; font-size: 20px">Prev</a>
+                    </div>
+                    <div style="margin: 10px 10px; font-size: 20px">
+                       Page: ${page}/${size}
+                    </div>
+                    <div>
+                        <a href="HomeController?page=${page+1>size?page:page+1}" style="margin: 10px 10px; font-size: 20px">Next</a>
+                    </div>
+                </div>
+                <div class="slider-bar" style="dislay: flex; flex-wrap: wrap">
+
                     <c:forEach items="${storyList}" var="story">
-                        <div class="item-container">
+                        <div class="item-container" style="margin-bottom:  40px">
                             <a class="item" href="ReadController?name=${story.getName()}&chapter=1">
                                 <img src="${story.getThumbnail()}">
                                 <h1>${story.getName()}</h1>

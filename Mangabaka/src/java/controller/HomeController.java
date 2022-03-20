@@ -24,55 +24,45 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "indexController", urlPatterns = {"/HomeController"})
 public class HomeController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            StoryDAO storyDao = new StoryDAO();
-            ArrayList<Story> list = storyDao.getAll();
-            
-            HttpSession session = request.getSession();
-            
-            String username = (String)request.getAttribute("username");
-            request.setAttribute("username", username);
-            request.setAttribute("storyList", list);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+        int pageSize = 3;
+        String page = request.getParameter("page");
+        int pageIndex = 1;
+        try {
+            pageIndex = Integer.parseInt(page);
+        } catch (Exception e) {
+            pageIndex = 1;
         }
+        String search = request.getParameter("search");
+        if (search == null) {
+            search = "";
+        }
+        StoryDAO storyDao = new StoryDAO();
+        int size = storyDao.getSize()/pageSize;
+        if(pageIndex>size) pageIndex=size;
+        if(pageIndex<1) pageIndex=1;
+        ArrayList<Story> list = null;
+        if (search.isEmpty()) {
+            request.setAttribute("size", size);
+            list = storyDao.getAll(pageIndex, pageSize);
+        } else {
+            list = storyDao.getStorys(search);
+        }
+        request.setAttribute("page", pageIndex);
+        HttpSession session = request.getSession();
+        String username = (String) request.getAttribute("username");
+        request.setAttribute("username", username);
+        request.setAttribute("storyList", list);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

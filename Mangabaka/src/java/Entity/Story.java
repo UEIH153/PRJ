@@ -10,10 +10,19 @@ package Entity;
  * @author tinht
  */
 public class Story {
+    int id;
     int chapterAmount;
     String name, status, link, thumbnail, author;
 
     public Story() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Story(String name, int chapterAmount, String status, String link, String thumbnail, String author) {

@@ -20,7 +20,7 @@
             </div>
             
         </header>
-        <form action="SignUpController" method="GET">
+        <form action="SignUpServlet" method="post">
             <div class="main-view">
                 <a class="backLogin" href="login.jsp">
                     <i class="fas fa-long-arrow-alt-left"></i>
